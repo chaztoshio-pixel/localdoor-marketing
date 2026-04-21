@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-ink: 11 11 12;
+    --color-stone-5: 250 250 247;
+    --color-plum: 147 51 234;
+    --color-plum-dark: 88 28 135;
+    --color-mint: 52 211 153;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-stone-5 text-ink-60 font-sans text-body antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink;
+    font-feature-settings: "ss01";
+  }
+
+  p {
+    @apply text-ink-60;
+  }
+
+  a {
+    @apply transition-colors duration-150;
+  }
+
+  ::selection {
+    background-color: rgb(var(--color-plum) / 0.2);
+    color: rgb(var(--color-ink));
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-plum ring-offset-2 ring-offset-stone-5 rounded-sm;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply font-sans;
+  }
+
+  button {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-micro font-medium uppercase tracking-[0.14em] text-plum;
+  }
+  .eyebrow-muted {
+    @apply text-micro font-medium uppercase tracking-[0.14em] text-ink-60;
+  }
+  .container-edge {
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+  }
+  .prose-editorial p {
+    @apply text-body-lg text-ink-60 max-w-prose;
+  }
+  .keyline-t {
+    @apply border-t border-stone-20;
+  }
+  .keyline-b {
+    @apply border-b border-stone-20;
+  }
+  .keyline-x {
+    @apply border-x border-stone-20;
+  }
+  .link-underline {
+    @apply relative inline-flex items-center gap-1 text-ink font-medium;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: color 150ms ease, background-size 250ms ease;
+  }
+  .link-underline:hover {
+    @apply text-plum;
+    background-size: 100% 2px;
+  }
+
+  .prose-legal h2 {
+    @apply font-display text-display-sm text-ink mt-10 mb-3 first:mt-0;
+  }
+  .prose-legal h3 {
+    @apply font-display text-title text-ink mt-8 mb-2;
+  }
+  .prose-legal p {
+    @apply text-body text-ink-60 mb-4 max-w-prose;
+  }
+  .prose-legal ul,
+  .prose-legal ol {
+    @apply text-body text-ink-60 mb-4 flex flex-col gap-2 pl-5 max-w-prose;
+  }
+  .prose-legal ul {
+    @apply list-disc;
+  }
+  .prose-legal ol {
+    @apply list-decimal;
+  }
+  .prose-legal a {
+    @apply text-plum underline underline-offset-4 hover:text-plum-dark;
+  }
+  .prose-legal strong {
+    @apply text-ink font-medium;
+  }
+}

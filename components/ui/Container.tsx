@@ -1,0 +1,14 @@
+import { cn } from "@/lib/cn";
+import type { HTMLAttributes } from "react";
+
+export function Container({
+  className,
+  ...props
+}: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      className={cn("w-full max-w-[1280px] mx-auto container-edge", className)}
+      {...props}
+    />
+  );
+}
